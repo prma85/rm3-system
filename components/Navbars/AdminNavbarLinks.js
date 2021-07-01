@@ -1,26 +1,27 @@
-import React from "react";
-import classNames from "classnames";
+import React from 'react';
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Hidden from "@material-ui/core/Hidden";
-import Poppers from "@material-ui/core/Popper";
-import Divider from "@material-ui/core/Divider";
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Hidden from '@material-ui/core/Hidden';
+import Poppers from '@material-ui/core/Popper';
+import Divider from '@material-ui/core/Divider';
+import Link from '@material-ui/core/Link';
 // @material-ui/icons
-import Person from "@material-ui/icons/Person";
-import Notifications from "@material-ui/icons/Notifications";
-import Dashboard from "@material-ui/icons/Dashboard";
-import Search from "@material-ui/icons/Search";
+import Person from '@material-ui/icons/Person';
+import Notifications from '@material-ui/icons/Notifications';
+import Dashboard from '@material-ui/icons/Dashboard';
+import Search from '@material-ui/icons/Search';
 // core components
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import useWindowSize from "components/Hooks/useWindowSize.js";
+import CustomInput from 'components/CustomInput/CustomInput.js';
+import Button from 'components/CustomButtons/Button.js';
+import useWindowSize from 'components/Hooks/useWindowSize.js';
 
-import styles from "assets/jss/rm3/components/headerLinksStyle.js";
+import styles from 'assets/jss/rm3/components/headerLinksStyle.js';
 
 export default function AdminNavbarLinks() {
   const size = useWindowSize();
@@ -53,37 +54,39 @@ export default function AdminNavbarLinks() {
       <div className={classes.searchWrapper}>
         <CustomInput
           formControlProps={{
-            className: classes.margin + " " + classes.search,
+            className: classes.margin + ' ' + classes.search,
           }}
           inputProps={{
-            placeholder: "Search",
+            placeholder: 'Search',
             inputProps: {
-              "aria-label": "Search",
+              'aria-label': 'Search',
             },
           }}
         />
-        <Button color="white" aria-label="edit" justIcon round>
+        <Button color="white" aria-label="edit" justIcon round style={{ marginRight: '20px' }}>
           <Search />
         </Button>
       </div>
       <Button
-        color={size.width > 959 ? "transparent" : "white"}
+        color={size.width > 959 ? 'transparent' : 'white'}
         justIcon={size.width > 959}
         simple={!(size.width > 959)}
         aria-label="Dashboard"
         className={classes.buttonLink}
       >
-        <Dashboard className={classes.icons} />
-        <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>Dashboard</p>
-        </Hidden>
+        <Link style={{ color: '#555' }} title="Dashboard" href="/dashboard">
+          <Dashboard className={classes.icons} />
+          <Hidden mdUp implementation="css">
+            <p className={classes.linkText}>Dashboard</p>
+          </Hidden>
+        </Link>
       </Button>
       <div className={classes.manager}>
         <Button
-          color={size.width > 959 ? "transparent" : "white"}
+          color={size.width > 959 ? 'transparent' : 'white'}
           justIcon={size.width > 959}
           simple={!(size.width > 959)}
-          aria-owns={openNotification ? "notification-menu-list-grow" : null}
+          aria-owns={openNotification ? 'notification-menu-list-grow' : null}
           aria-haspopup="true"
           onClick={handleClickNotification}
           className={classes.buttonLink}
@@ -102,9 +105,7 @@ export default function AdminNavbarLinks() {
           transition
           disablePortal
           className={
-            classNames({ [classes.popperClose]: !openNotification }) +
-            " " +
-            classes.popperNav
+            classNames({ [classes.popperClose]: !openNotification }) + ' ' + classes.popperNav
           }
         >
           {({ TransitionProps, placement }) => (
@@ -112,41 +113,25 @@ export default function AdminNavbarLinks() {
               {...TransitionProps}
               id="notification-menu-list-grow"
               style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
+                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
               }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseNotification}>
                   <MenuList role="menu">
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      Mike John responded to your email
+                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                      Mike John responded to your message
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
+                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
                       You have 5 new tasks
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      You{"'"}re now friend with Andrew
+                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                      It is time for your risk review: Project Omega
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      Another Notification
+                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                      Project Alpha is past due 2 days for the risk review
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
+                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
                       Another One
                     </MenuItem>
                   </MenuList>
@@ -158,10 +143,10 @@ export default function AdminNavbarLinks() {
       </div>
       <div className={classes.manager}>
         <Button
-          color={size.width > 959 ? "transparent" : "white"}
+          color={size.width > 959 ? 'transparent' : 'white'}
           justIcon={size.width > 959}
           simple={!(size.width > 959)}
-          aria-owns={openProfile ? "profile-menu-list-grow" : null}
+          aria-owns={openProfile ? 'profile-menu-list-grow' : null}
           aria-haspopup="true"
           onClick={handleClickProfile}
           className={classes.buttonLink}
@@ -176,41 +161,27 @@ export default function AdminNavbarLinks() {
           anchorEl={openProfile}
           transition
           disablePortal
-          className={
-            classNames({ [classes.popperClose]: !openProfile }) +
-            " " +
-            classes.popperNav
-          }
+          className={classNames({ [classes.popperClose]: !openProfile }) + ' ' + classes.popperNav}
         >
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               id="profile-menu-list-grow"
               style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
+                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
               }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                    <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Profile
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                    <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Settings
                     </MenuItem>
                     <Divider light />
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                    <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Logout
                     </MenuItem>
                   </MenuList>

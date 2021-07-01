@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
 // layout for this page
-import Admin from "layouts/Admin.js";
+import Admin from 'layouts/Admin.js';
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import GridItem from 'components/Grid/GridItem.js';
+import GridContainer from 'components/Grid/GridContainer.js';
+import CustomInput from 'components/CustomInput/CustomInput.js';
+import Button from 'components/CustomButtons/Button.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardAvatar from 'components/Card/CardAvatar.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
 
-import avatar from "assets/img/faces/marc.jpg";
+import avatar from 'assets/img/faces/paulo.jpg';
 
 const styles = {
   cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    marginBottom: "0",
+    color: 'rgba(255,255,255,.62)',
+    margin: '0',
+    fontSize: '14px',
+    marginTop: '0',
+    marginBottom: '0',
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
+    color: '#FFFFFF',
+    marginTop: '0px',
+    minHeight: 'auto',
+    fontWeight: '300',
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none",
+    marginBottom: '3px',
+    textDecoration: 'none',
   },
 };
 
@@ -52,13 +52,13 @@ function UserProfile() {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomInput
-                    labelText="Company (disabled)"
+                    labelText="Company"
                     id="company-disabled"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      disabled: true,
+                      value: 'RM3',
                     }}
                   />
                 </GridItem>
@@ -69,6 +69,10 @@ function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    inputProps={{
+                      value: 'paulo.andrade',
+                      disabled: true,
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -77,6 +81,10 @@ function UserProfile() {
                     id="email-address"
                     formControlProps={{
                       fullWidth: true,
+                    }}
+                    inputProps={{
+                      value: 'paulo@rm3.io',
+                      disabled: true,
                     }}
                   />
                 </GridItem>
@@ -89,6 +97,9 @@ function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    inputProps={{
+                      value: 'Paulo',
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
@@ -97,6 +108,9 @@ function UserProfile() {
                     id="last-name"
                     formControlProps={{
                       fullWidth: true,
+                    }}
+                    inputProps={{
+                      value: 'Andrade',
                     }}
                   />
                 </GridItem>
@@ -109,6 +123,9 @@ function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    inputProps={{
+                      value: 'Regina',
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -117,6 +134,9 @@ function UserProfile() {
                     id="country"
                     formControlProps={{
                       fullWidth: true,
+                    }}
+                    inputProps={{
+                      value: 'Canada',
                     }}
                   />
                 </GridItem>
@@ -127,21 +147,8 @@ function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
-                  <CustomInput
-                    labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
                     inputProps={{
-                      multiline: true,
-                      rows: 5,
+                      value: 'S4S 4S4',
                     }}
                   />
                 </GridItem>
@@ -160,16 +167,13 @@ function UserProfile() {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
+              <h6 className={classes.cardCategory}>CEO</h6>
+              <h4 className={classes.cardTitle}>Paulo Andrade</h4>
               <p className={classes.description}>
-                Don{"'"}t be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+                Don{"'"}t be scared of the truth because we need to restart the human foundation in
+                truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the
+                back is...
               </p>
-              <Button color="primary" round>
-                Follow
-              </Button>
             </CardBody>
           </Card>
         </GridItem>
