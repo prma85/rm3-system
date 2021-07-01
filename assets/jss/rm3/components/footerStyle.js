@@ -31,7 +31,8 @@ const footerStyle = {
     position: 'sticky',
     backgroundColor: 'white',
     display: 'flex',
-    boxShadow: '0px 5px 24px -5px rgba(14, 31, 53, 0.4)',
+    boxShadow: '5px 0px 24px -5px rgba(14, 31, 53, 0.4)',
+    zIndex: 555,
     ...defaultFont,
   },
   a: {

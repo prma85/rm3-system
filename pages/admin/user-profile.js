@@ -58,7 +58,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'RM3',
+                      defaultValue: 'RM3',
                     }}
                   />
                 </GridItem>
@@ -70,7 +70,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'paulo.andrade',
+                      defaultValue: 'paulo.andrade',
                       disabled: true,
                     }}
                   />
@@ -83,7 +83,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'paulo@rm3.io',
+                      defaultValue: 'paulo@rm3.io',
                       disabled: true,
                     }}
                   />
@@ -98,7 +98,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'Paulo',
+                      defaultValue: 'Paulo',
                     }}
                   />
                 </GridItem>
@@ -110,7 +110,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'Andrade',
+                      defaultValue: 'Andrade',
                     }}
                   />
                 </GridItem>
@@ -124,7 +124,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'Regina',
+                      defaultValue: 'Regina',
                     }}
                   />
                 </GridItem>
@@ -136,7 +136,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'Canada',
+                      defaultValue: 'Canada',
                     }}
                   />
                 </GridItem>
@@ -148,7 +148,7 @@ function UserProfile() {
                       fullWidth: true,
                     }}
                     inputProps={{
-                      value: 'S4S 4S4',
+                      defaultValue: 'S4S 4S4',
                     }}
                   />
                 </GridItem>
