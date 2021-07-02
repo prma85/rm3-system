@@ -3,52 +3,64 @@ import {
   primaryColor,
   dangerColor,
   grayColor,
-} from "assets/jss/rm3.js";
-import tooltipStyle from "assets/jss/rm3/tooltipStyle.js";
-import checkboxAdnRadioStyle from "assets/jss/rm3/checkboxAdnRadioStyle.js";
+  successColor,
+  warningColor,
+} from 'assets/jss/rm3.js';
+import tooltipStyle from 'assets/jss/rm3/tooltipStyle.js';
+import checkboxAdnRadioStyle from 'assets/jss/rm3/checkboxAdnRadioStyle.js';
 const tasksStyle = {
   ...tooltipStyle,
   ...checkboxAdnRadioStyle,
   table: {
-    marginBottom: "0",
-    overflow: "visible",
+    marginBottom: '0',
+    overflow: 'visible',
   },
   tableRow: {
-    position: "relative",
-    borderBottom: "1px solid " + grayColor[5],
+    position: 'relative',
+    borderBottom: '1px solid ' + grayColor[5],
   },
   tableActions: {
-    display: "flex",
-    border: "none",
-    padding: "12px 8px !important",
-    verticalAlign: "middle",
+    display: 'flex',
+    border: 'none',
+    padding: '12px 8px !important',
+    verticalAlign: 'middle',
   },
   tableCell: {
     ...defaultFont,
-    padding: "8px",
-    verticalAlign: "middle",
-    border: "none",
-    lineHeight: "1.42857143",
-    fontSize: "14px",
+    padding: '8px',
+    verticalAlign: 'middle',
+    border: 'none',
+    lineHeight: '1.42857143',
+    fontSize: '14px',
   },
   tableActionButton: {
-    width: "27px",
-    height: "27px",
-    padding: "0",
+    width: '27px',
+    height: '27px',
+    padding: '0',
   },
   tableActionButtonIcon: {
-    width: "17px",
-    height: "17px",
+    width: '17px',
+    height: '17px',
   },
   edit: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     color: primaryColor[0],
-    boxShadow: "none",
+    boxShadow: 'none',
+  },
+  pause: {
+    backgroundColor: 'transparent',
+    color: warningColor[0],
+    boxShadow: 'none',
   },
   close: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     color: dangerColor[0],
-    boxShadow: "none",
+    boxShadow: 'none',
+  },
+  play: {
+    backgroundColor: 'transparent',
+    color: successColor[0],
+    boxShadow: 'none',
   },
 };
 export default tasksStyle;

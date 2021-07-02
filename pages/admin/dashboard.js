@@ -138,7 +138,7 @@ function Dashboard() {
                 <span className={classes.successText}>
                   <ArrowUpward className={classes.upArrowCardCategory} /> 15%
                 </span>{' '}
-                increase in today completed tasks.
+                increase in today tasks.
               </p>
             </CardBody>
             <CardFooter chart>
@@ -215,7 +215,14 @@ function Dashboard() {
               {
                 tabName: 'Completed',
                 tabIcon: Cloud,
-                tabContent: <Tasks checkedIndexes={[1]} tasksIndexes={[0, 1, 2]} tasks={server} />,
+                tabContent: (
+                  <Tasks
+                    checkedIndexes={[1]}
+                    tasksIndexes={[0, 1, 2]}
+                    tasks={server}
+                    completed={true}
+                  />
+                ),
               },
             ]}
           />

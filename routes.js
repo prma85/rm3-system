@@ -47,18 +47,11 @@ const dashboardRoutes = [
     layout: '/admin',
   },
   {
-    path: '/messages',
-    name: 'Messages',
+    path: '/lessons-learned',
+    name: 'Lessons Learned',
     icon: Forum,
     layout: '/admin',
   },
-  {
-    path: '/team-members',
-    name: 'Team Members',
-    icon: People,
-    layout: '/admin',
-  },
-
   {
     path: '/settings',
     name: 'Settings',

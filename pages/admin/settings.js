@@ -1,7 +1,9 @@
 import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import MenuItem from '@material-ui/core/MenuItem';
 // layout for this page
 import Admin from 'layouts/Admin.js';
 // core components
@@ -11,7 +13,6 @@ import CustomInput from 'components/CustomInput/CustomInput.js';
 import Button from 'components/CustomButtons/Button.js';
 import Card from 'components/Card/Card.js';
 import CardHeader from 'components/Card/CardHeader.js';
-import CardAvatar from 'components/Card/CardAvatar.js';
 import CardBody from 'components/Card/CardBody.js';
 import CardFooter from 'components/Card/CardFooter.js';
 
@@ -42,141 +43,157 @@ function UserProfile() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={12} sm={12} md={8}>
+        <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-              <p className={classes.cardCategoryWhite}>Some information are managed by you SSO</p>
+            <CardHeader color="rose">
+              <h4 className={classes.cardTitleWhite}>Settings</h4>
+              <p className={classes.cardCategoryWhite}>Integration Configuration and Database</p>
             </CardHeader>
             <CardBody>
+              <Typography variant="h5" gutterBottom>
+                Database Configuration
+              </Typography>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={6} md={6}>
                   <CustomInput
-                    labelText="Company"
+                    labelText="Address"
                     id="company-disabled"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      defaultValue: 'RM3',
-                      disabled: true,
+                      defaultValue: '127.0.0.1',
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={6} md={6}>
                   <CustomInput
-                    labelText="Username"
+                    labelText="Database Name"
                     id="username"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      defaultValue: 'paulo.andrade',
-                      disabled: true,
+                      defaultValue: 'rm3_next',
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={6} md={4}>
                   <CustomInput
-                    labelText="Email address"
+                    labelText="Username"
+                    id="email-address"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: 'rm3',
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={6} md={4}>
+                  <CustomInput
+                    labelText="Password"
                     id="email-address"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
                       defaultValue: 'paulo@rm3.io',
-                      disabled: true,
+                      type: 'password',
                     }}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="First Name"
-                    id="first-name"
+                    labelText="Port"
+                    id="email-address"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      defaultValue: 'Paulo',
+                      defaultValue: '2300',
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+              </GridContainer>
+              <br />
+              <Typography variant="h5" gutterBottom>
+                Integration Configuration
+              </Typography>
+              <GridContainer>
+                <GridItem xs={12} sm={6} md={6}>
                   <CustomInput
-                    labelText="Last Name"
+                    labelText="First Name"
+                    id="first-name"
+                    select
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: 'MS Project',
+                      options: [
+                        <MenuItem value={'MS Project'}>Microsoft Project</MenuItem>,
+                        <MenuItem value={'Jira'}>Jira</MenuItem>,
+                        <MenuItem value={'Asana'}>Asana</MenuItem>,
+                        <MenuItem value={'MS Azure'}>Microsoft Azure DevOps</MenuItem>,
+                      ],
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={6} md={6}>
+                  <CustomInput
+                    labelText="Server Address"
                     id="last-name"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      defaultValue: 'Andrade',
+                      defaultValue: 'https://internalms.rm3.io/teamYoda/api',
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={6} md={4}>
+                  <CustomInput
+                    labelText="Username"
+                    id="email-address"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: 'rm3',
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={6} md={4}>
+                  <CustomInput
+                    labelText="Password"
+                    id="email-address"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: 'paulo@rm3.io',
+                      type: 'password',
                     }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="SSO"
-                    id="SSO"
+                    labelText="Port"
+                    id="email-address"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      defaultValue: 'Microsoft Azure AD',
-                      disabled: true,
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="City"
-                    id="city"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      defaultValue: 'Regina',
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Country"
-                    id="country"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      defaultValue: 'Canada',
+                      defaultValue: '8080',
                     }}
                   />
                 </GridItem>
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary">Update Profile</Button>
+              <Button color="rose">Update Profile</Button>
             </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card profile>
-            <CardAvatar profile>
-              <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h4 className={classes.cardTitle}>Paulo Andrade</h4>
-              <h6 className={classes.cardCategory}>Project Manager</h6>
-              <p className={classes.description}>
-                Don{"'"}t be scared of the truth because we need to restart the human foundation in
-                truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the
-                back is...
-              </p>
-            </CardBody>
           </Card>
         </GridItem>
       </GridContainer>

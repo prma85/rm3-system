@@ -10,6 +10,14 @@ import {
 } from 'assets/jss/rm3.js';
 
 const tableStyle = (theme) => ({
+  link: {
+    color: primaryColor[0],
+    cursor: 'pointer',
+  },
+  input: {
+    border: '1px solid #c1c0c0 !important',
+    width: '50px',
+  },
   warningTableHeader: {
     color: warningColor[0],
   },
