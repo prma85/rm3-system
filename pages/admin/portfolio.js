@@ -14,7 +14,8 @@ import Card from 'components/Card/Card.js';
 import CardHeader from 'components/Card/CardHeader.js';
 import CardBody from 'components/Card/CardBody.js';
 import Button from 'components/CustomButtons/Button.js';
-import NewProject from './new-project';
+import NewProject from './new-project.js';
+import projectData from 'variables/project.js';
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -112,27 +113,7 @@ function TableList() {
     [...tableData1, ...tableData2, ...tableData3].filter((t) => t[0] === id)[0];
     [...tableData1, ...tableData2, ...tableData3].filter((t) => t[0] === id)[0];
 
-    setProjectEditData({
-      title: project[1],
-      pm: project[2],
-      category: 'software',
-      uuid: 'MS_PROJECT_05151-21051581-105156-02',
-      budget: '$500,000',
-      deadline: 'Jul 1, 2021',
-      description: 'just one more project',
-      complexity: [
-        { FQ: 3, W: 1 },
-        { FQ: 3, W: 1 },
-        { FQ: 3, W: 1 },
-        { FQ: 2, W: 2 },
-        { FQ: 2, W: 2 },
-        { FQ: 2, W: 3 },
-        { FQ: 1, W: 3 },
-        { FQ: 1, W: 4 },
-        { FQ: 1, W: 4 },
-        { FQ: 1, W: 5 },
-      ],
-    });
+    setProjectEditData(projectData(project));
     setModal({
       open: true,
       type,

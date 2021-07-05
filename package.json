@@ -25,8 +25,11 @@
     "prop-types": "15.7.2",
     "react": "17.0.1",
     "react-chartist": "0.14.3",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
     "react-dom": "17.0.1",
-    "react-swipeable-views": "0.13.9"
+    "react-swipeable-views": "0.13.9",
+    "react-tag-input": "^6.7.1"
   },
   "eslintConfig": {
     "extends": "react-app"
