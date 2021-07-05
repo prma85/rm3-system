@@ -137,7 +137,7 @@ function TableList() {
         <Button
           onClick
           color="success"
-          onClick={() => setModal((prev) => ({ ...prev, open: true }))}
+          onClick={() => setModal((prev) => ({ type: 'new', open: true }))}
         >
           Add New Project
         </Button>

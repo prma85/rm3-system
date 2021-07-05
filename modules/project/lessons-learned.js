@@ -57,7 +57,7 @@ function Row({ row }) {
 
   return (
     <React.Fragment>
-      <TableRow className={classes.root}>
+      <TableRow className={classes.root} key={`data-${Date.now()}`}>
         <TableCell>
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -70,7 +70,7 @@ function Row({ row }) {
         <TableCell align="center">{row.otherProject ? 'yes' : 'no'}</TableCell>
         <TableCell>{row.date}</TableCell>
       </TableRow>
-      <TableRow>
+      <TableRow key={`details-${Date.now()}`}>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
@@ -90,8 +90,8 @@ function Row({ row }) {
                     Actions
                   </Typography>
                   <List>
-                    {row.actions.map((action) => (
-                      <ListItem>
+                    {row.actions.map((action, i) => (
+                      <ListItem key={`actions-${i}-${Date.now()}`}>
                         <ListItemIcon>
                           <FolderIcon />
                         </ListItemIcon>

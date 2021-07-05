@@ -35,8 +35,7 @@ function ConfigureProject({ projectData, setProjectData }) {
     setProjectData(tempData);
   };
 
-  const { tags, type } = projectData;
-
+  const { tags = null, type } = projectData || { type: 'new' };
   const [projectTags, setProjectTags] = React.useState(type !== 'new' && tags ? tags : []);
 
   const handleDelete = (i) => {

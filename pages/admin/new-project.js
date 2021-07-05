@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 function NewProject({ onClose, data = {}, type = 'new' }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [projectData, setProjectData] = React.useState(data);
+  const [projectData, setProjectData] = React.useState(type === 'new' ? null : data);
   const [completed, setCompleted] = React.useState(
     type === 'new' ? [] : [true, true, true, true, type === 'closed']
   );
