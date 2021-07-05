@@ -1,37 +1,24 @@
 import React from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import StepButton from '@material-ui/core/StepButton';
-import InputLabel from '@material-ui/core/InputLabel';
-import Avatar from '@material-ui/core/Avatar';
-import { deepOrange, deepPurple } from '@material-ui/core/colors';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import StepLabel from '@material-ui/core/StepLabel';
+import Stepper from '@material-ui/core/Stepper';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 // layout for this page
 import Admin from 'layouts/Admin.js';
 // core components
-import GridItem from 'components/Grid/GridItem.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
-import Button from 'components/CustomButtons/Button.js';
 import Card from 'components/Card/Card.js';
 import CardBody from 'components/Card/CardBody.js';
 import CardFooter from 'components/Card/CardFooter.js';
-import Table from 'components/Table/Table.js';
-import customInputStyle from 'assets/jss/rm3/components/customInputStyle.js';
+import Button from 'components/CustomButtons/Button.js';
 // modules
-import ConfigureProject from 'modules/project/configure-project.js';
 import CalculateComplexity from 'modules/project/calculate-complexity.js';
-import ProjectTeam from 'modules/project/project-team.js';
+import ConfigureProject from 'modules/project/configure-project.js';
 import LessonsLearned from 'modules/project/lessons-learned.js';
+import ProjectTeam from 'modules/project/project-team.js';
+import Risks from 'modules/project/risks.js';
 
 function getSteps(type) {
   if (type === 'new') {
@@ -49,10 +36,6 @@ function getSteps(type) {
   return ['Configure Project', 'Calculate Complexity', 'Project Team', 'Project Risks'];
 }
 
-function ShowRisks() {
-  return 'test';
-}
-
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
@@ -62,7 +45,7 @@ function getStepContent(stepIndex) {
     case 2:
       return ProjectTeam;
     case 3:
-      return ShowRisks;
+      return Risks;
     case 4:
       return LessonsLearned;
     default:
@@ -87,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '3px',
     textDecoration: 'none',
   },
+  cardRoot: {},
+  cardBody: {},
+  cardActions: {},
   root: {
     width: '100%',
   },
@@ -160,22 +146,22 @@ function NewProject({ onClose, data = {}, type = 'new' }) {
           </Step>
         ))}
       </Stepper>
-      <Card>
+      <Card className={classes.cardRoot}>
         {activeStep === steps.length ? (
           <>
-            <CardBody>
+            <CardBody className={classes.cardBody}>
               <Typography className={classes.instructions}>All steps completed</Typography>
             </CardBody>
-            <CardFooter>
+            <CardFooter className={classes.cardActions}>
               <Button onClick={handleReset}>Close</Button>
             </CardFooter>
           </>
         ) : (
           <>
-            <CardBody>
+            <CardBody className={classes.cardBody}>
               <Content projectData={projectData} setProjectData={setProjectData} />
             </CardBody>
-            <CardFooter>
+            <CardFooter className={classes.cardActions}>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}

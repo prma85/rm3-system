@@ -47,15 +47,20 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {},
   modal: {
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 'auto',
+    width: '90%',
+    display: 'flex',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(1, 4, 1),
+    height: '85vh',
+    overflow: 'auto',
+    width: '100%',
   },
 }));
 
