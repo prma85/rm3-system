@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NewRequest({ onClose, data = {} }) {
+function NewRisk({ onClose, data = {} }) {
   const classes = useStyles();
   const [requestData, setRequestData] = React.useState(data);
 
@@ -72,13 +72,13 @@ function NewRequest({ onClose, data = {} }) {
             </GridItem>
             <GridItem xs={12} sm={6} md={6}>
               <CustomInput
-                labelText="Requester"
+                labelText="Reporter"
                 id="username"
                 formControlProps={{
                   fullWidth: true,
                 }}
                 inputProps={{
-                  defaultValue: data.requester,
+                  defaultValue: data.reporter,
                 }}
               />
             </GridItem>
@@ -93,14 +93,11 @@ function NewRequest({ onClose, data = {} }) {
                 inputProps={{
                   defaultValue: data.category,
                   options: [
-                    <MenuItem value="Scope">Scope</MenuItem>,
-                    <MenuItem value="Resources">Resources</MenuItem>,
-                    <MenuItem value="Infra">Infra</MenuItem>,
-                    <MenuItem value="Security">Security</MenuItem>,
-                    <MenuItem value="Quality">Quality</MenuItem>,
-                    <MenuItem value="External">External</MenuItem>,
-                    <MenuItem value="Risk">Risk</MenuItem>,
-                    <MenuItem value="Document">Document</MenuItem>,
+                    <MenuItem value="Technical">Technical</MenuItem>,
+                    <MenuItem value="Programmatic">Programmatic</MenuItem>,
+                    <MenuItem value="Support">Support</MenuItem>,
+                    <MenuItem value="Cost">Cost</MenuItem>,
+                    <MenuItem value="Schedule">Schedule</MenuItem>,
                   ],
                 }}
               />
@@ -114,52 +111,52 @@ function NewRequest({ onClose, data = {} }) {
                 }}
                 select
                 inputProps={{
-                  defaultValue: data.status,
+                  defaultValue: data.status || 'Not Monitored',
                   options: [
-                    <MenuItem value="Open">Open</MenuItem>,
-                    <MenuItem value="In Execution">In Execution</MenuItem>,
+                    <MenuItem value="Not Monitored">Not Monitored</MenuItem>,
+                    <MenuItem value="In progress">In progress</MenuItem>,
                     <MenuItem value="Closed">Closed</MenuItem>,
                     <MenuItem value="Abandoned">Abandoned</MenuItem>,
                   ],
                 }}
               />
             </GridItem>
-            {data.status && (
-              <>
-                <GridItem xs={12} sm={6} md={6}>
-                  <CustomInput
-                    labelText="Priority"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    select
-                    inputProps={{
-                      defaultValue: 'Normal',
-                      options: [
-                        <MenuItem value="Low">Low</MenuItem>,
-                        <MenuItem value="Normal">Normal</MenuItem>,
-                        <MenuItem value="High">High</MenuItem>,
-                        <MenuItem value="Critical">Critical</MenuItem>,
-                      ],
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={6} md={6}>
-                  <CustomInput
-                    labelText="Status"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      defaultValue: 'Jhon Wicker',
-                      disabled: true,
-                    }}
-                  />
-                </GridItem>
-              </>
-            )}
+            <GridItem xs={12} sm={6} md={6}>
+              <CustomInput
+                labelText="Priority"
+                id="email-address"
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                select
+                inputProps={{
+                  defaultValue: data.priority || 'medium',
+                  options: [
+                    <MenuItem value="low">Low</MenuItem>,
+                    <MenuItem value="medium">Medium</MenuItem>,
+                    <MenuItem value="high">High</MenuItem>,
+                    <MenuItem value="critical">Critical</MenuItem>,
+                  ],
+                }}
+              />
+            </GridItem>
+            <GridItem xs={12} sm={6} md={6}>
+              <CustomInput
+                labelText="Type"
+                id="email-address"
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                select
+                inputProps={{
+                  defaultValue: data.type || 'threat',
+                  options: [
+                    <MenuItem value="opportunity">Opportunity</MenuItem>,
+                    <MenuItem value="threat">Threat</MenuItem>,
+                  ],
+                }}
+              />
+            </GridItem>
             <GridItem xs={12} sm={12} md={12}>
               <CustomInput
                 labelText="Description"
@@ -178,12 +175,21 @@ function NewRequest({ onClose, data = {} }) {
             <>
               <br />
               <Typography variant="h6" gutterBottom>
+                Projects
+              </Typography>
+              <Table
+                tableHeaderColor="danger"
+                tableHead={['ID', 'Project Title', 'Stated Date', 'Exposure', 'Last Meeting']}
+                tableData={data.projects ?? [['No entries']]}
+              />
+              <br />
+              <Typography variant="h6" gutterBottom>
                 Historic
               </Typography>
               <Table
-                tableHeaderColor="warning"
+                tableHeaderColor="danger"
                 tableHead={['Update type', 'Initiator', 'Date', 'Comments']}
-                tableData={data.historic || [['No entries']]}
+                tableData={data.historic ?? [['No entries']]}
               />
             </>
           )}
@@ -192,7 +198,7 @@ function NewRequest({ onClose, data = {} }) {
           <Button color="secondary" onClick={onClose}>
             Cancel
           </Button>
-          <Button color="warning" onClick={onClose}>
+          <Button color="danger" onClick={onClose}>
             {data.status ? 'Save Changes' : 'Send'}
           </Button>
         </CardFooter>
@@ -201,6 +207,6 @@ function NewRequest({ onClose, data = {} }) {
   );
 }
 
-NewRequest.layout = Admin;
+NewRisk.layout = Admin;
 
-export default NewRequest;
+export default NewRisk;

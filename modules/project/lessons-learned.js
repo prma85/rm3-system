@@ -1,9 +1,5 @@
 import React from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
 import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
@@ -18,24 +14,14 @@ import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import Admin from 'layouts/Admin.js';
-import GridItem from 'components/Grid/GridItem.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
-import Button from 'components/CustomButtons/Button.js';
 import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CardFooter from 'components/Card/CardFooter.js';
 import CardContent from '@material-ui/core/CardContent';
 import FolderIcon from '@material-ui/icons/Folder';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-
-import customInputStyle from 'assets/jss/rm3/components/customInputStyle.js';
+import { warningColor } from 'assets/jss/rm3.js';
 
 const useRowStyles = makeStyles({
   root: {
@@ -49,6 +35,9 @@ const useRowStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  head: {
+    color: warningColor[0],
+  },
 });
 
 function Row({ row }) {
@@ -60,7 +49,11 @@ function Row({ row }) {
       <TableRow className={classes.root} key={`data-${Date.now()}`}>
         <TableCell>
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? (
+              <KeyboardArrowUpIcon className={classes.head} />
+            ) : (
+              <KeyboardArrowDownIcon className={classes.head} />
+            )}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
@@ -85,7 +78,9 @@ function Row({ row }) {
                   <Typography variant="body2" component="p">
                     {row.description}
                   </Typography>
+                  <br />
                   <Divider />
+                  <br />
                   <Typography className={classes.title} color="textSecondary" gutterBottom>
                     Actions
                   </Typography>
@@ -113,16 +108,20 @@ function LessonsLearned({ projectData }) {
   // id, title, otherProject, date, description, actions
   const { lessonsLearned } = projectData;
   const [rows] = React.useState(lessonsLearned);
+  const classes = useRowStyles();
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>ID</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell align="center">Happened Before?</TableCell>
-            <TableCell>Date</TableCell>
+            <TableCell className={classes.head}>ID</TableCell>
+            <TableCell className={classes.head}>Title</TableCell>
+            <TableCell className={classes.head} align="center">
+              Happened Before?
+            </TableCell>
+            <TableCell className={classes.head}>Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

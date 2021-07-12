@@ -34,51 +34,9 @@ import Card from 'components/Card/Card.js';
 import CardHeader from 'components/Card/CardHeader.js';
 import CardBody from 'components/Card/CardBody.js';
 import Button from 'components/CustomButtons/Button.js';
-import NewRequest from './new-change-request';
+import NewRisk from './new-risk';
 
-function createData(id, title, requester, category, status, lastUpdate) {
-  return { id, title, requester, category, status, lastUpdate };
-}
-
-const rows = [
-  createData(1, 'Update Scope Task 1.1', 'Dakota Rice', 'Scope', 'Open', '1 week ago'),
-  createData(3, 'Update Scope Task 2.2', 'Minerva Hooper', 'Scope', 'Open', '2 hours ago'),
-  createData(4, 'Update Scope Task 3.1', 'Sage Rodriguez', 'Scope', 'Open', '2 hours ago'),
-  createData(5, 'Change Resources', 'Philip Chaney', 'Resources', 'Closed', '1 day ago'),
-  createData(9, 'Buy New Software 1', 'Doris Greene', 'Software', 'In Execution', '1 day ago'),
-  createData(10, 'Buy New Software 2', 'Dakota Rice', 'Software', 'Closed', '2 seconds ago'),
-  createData(
-    13,
-    'Buy New Software 3',
-    'Minerva Hooper',
-    'Software',
-    'In Execution',
-    '2 seconds ago'
-  ),
-  createData(14, 'Buy New Software 4', 'Sage Rodriguez', 'Software', 'Closed', '2 seconds ago'),
-  createData(
-    15,
-    'Change Access Level Server 1',
-    'Philip Chaney',
-    'Infra',
-    'In Execution',
-    '2 seconds ago'
-  ),
-  createData(
-    19,
-    'Change Access Level Server 2',
-    'Doris Greene',
-    'Security',
-    'In Execution',
-    '2 seconds ago'
-  ),
-  createData(20, 'Get Access Server 3', 'Mason Porter', 'Security', 'In Execution', '1 hour ago'),
-  createData(21, 'Update Scope Task 1.2', 'Dakota Rice', 'Scope', 'Open', '3 days ago'),
-  createData(23, 'Update Scope Task 2.3', 'Minerva Hooper', 'Quality', 'Open', '3 days ago'),
-  createData(24, 'Update Scope Task 3.2', 'Sage Rodriguez', 'Quality', 'Closed', '2 seconds ago'),
-  createData(25, 'Change Resources for PJ', 'Philip Chaney', 'Resources', 'Open', '2 seconds ago'),
-  createData(29, 'Renew Software 10', 'Doris Greene', 'Software', 'Open', '2 seconds ago'),
-];
+import rows from 'variables/riskTable.js';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -110,9 +68,11 @@ function stableSort(array, comparator) {
 const headCells = [
   { id: 'id', numeric: true, disablePadding: false, label: 'ID' },
   { id: 'title', numeric: false, disablePadding: false, label: 'Title' },
-  { id: 'requester', numeric: false, disablePadding: false, label: 'Requester' },
+  { id: 'reporter', numeric: false, disablePadding: false, label: 'Reporter' },
   { id: 'category', numeric: false, disablePadding: false, label: 'Category' },
   { id: 'status', numeric: false, disablePadding: false, label: 'Status' },
+  { id: 'priority', numeric: false, disablePadding: false, label: 'Priority' },
+  { id: 'type', numeric: false, disablePadding: false, label: 'Type' },
   { id: 'lastUpdate', numeric: false, disablePadding: false, label: 'Last Update' },
 ];
 
@@ -125,16 +85,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/*
-        <TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
-          />
-        </TableCell>
-         */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -308,10 +258,17 @@ function TableList() {
     setData({
       ...request,
       description: 'This is a common description',
+      projects: [
+        // ['ID', 'Project Title', 'Stated Date', 'Exposure', 'Last Meeting']
+        [1, 'Project 1', 'Jan 1, 2021', 150, 'Jun 15, 2021'],
+        [2, 'Project 2', 'Feb 1, 2021', 110, 'Jun 15, 2021'],
+        [3, 'Project 3', 'Feb 15, 2021', 50, 'Jun 15, 2021'],
+        [4, 'Project 4', 'Mar 8, 2021', 80, 'Jun 15, 2021'],
+      ],
       historic: [
-        ['Info', 'System', 'Jul 1, 2021', 'A technician was attributed to the request'],
-        ['Status', 'Jhon', 'Jul 1, 2021', 'The status is now open'],
-        ['Status', 'System', 'Jul 1, 2021', 'The request was Created'],
+        ['Info', 'System', 'Jul 1, 2021', 'The risk was updated in a new meeting'],
+        ['Status', 'Jhon', 'Jul 1, 2021', 'The status is now In Progress'],
+        ['Status', 'System', 'Jul 1, 2021', 'The new risks was created'],
       ],
     });
     setIsModalNewOpen(true);
@@ -384,23 +341,17 @@ function TableList() {
                           key={row.id}
                           selected={isItemSelected}
                         >
-                          {/*
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={isItemSelected}
-                              inputProps={{ 'aria-labelledby': labelId }}
-                            />
-                          </TableCell>
-                          */}
                           <TableCell align="left" id={labelId} scope="row" padding="none">
                             <Link onClick={() => handleClickID(row.id)} className={classes.link}>
                               {row.id}
                             </Link>
                           </TableCell>
                           <TableCell align="left">{row.title}</TableCell>
-                          <TableCell align="left">{row.requester}</TableCell>
+                          <TableCell align="left">{row.reporter}</TableCell>
                           <TableCell align="left">{row.category}</TableCell>
                           <TableCell align="left">{row.status}</TableCell>
+                          <TableCell align="left">{row.priority}</TableCell>
+                          <TableCell align="left">{row.type}</TableCell>
                           <TableCell align="left">{row.lastUpdate}</TableCell>
                         </TableRow>
                       );
@@ -439,7 +390,7 @@ function TableList() {
       >
         <Fade in={isModalNewOpen}>
           <div className={classes.paper}>
-            <NewRequest data={data} onClose={onCloseModal} />
+            <NewRisk data={data} onClose={onCloseModal} />
           </div>
         </Fade>
       </Modal>
