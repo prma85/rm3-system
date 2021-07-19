@@ -17,7 +17,7 @@ const dailyCompletedTasksChart = {
   },
   options: {
     low: 0,
-    high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    high: 10,
     chartPadding: {
       top: 0,
       right: 0,
@@ -115,7 +115,7 @@ const completedTasksChart = {
   },
   options: {
     low: 0,
-    high: 80, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    high: 80,
     chartPadding: {
       top: 0,
       right: 0,
