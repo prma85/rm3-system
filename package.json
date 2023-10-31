@@ -10,7 +10,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"
   },
   "dependencies": {
-    "@material-ui/core": "4.11.3",
+    "@material-ui/core": "4.12.3",
     "@material-ui/icons": "4.11.2",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-sass": "1.0.1",
